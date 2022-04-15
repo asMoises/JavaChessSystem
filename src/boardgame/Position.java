@@ -2,32 +2,40 @@ package boardgame; // camada de tabuleiro
 
 public class Position {
 	private int row;
-	private int col;
+	private int column;
 
 	public Position() {
 
 	}
 
-	public Position(int row, int col) {
+	public Position(int row, int column) {
 		this.row = row;
-		this.col = col;
+		this.column = column;
 	}
 
 	public int getRow() {
 		return row;
 	}
 
-	public int getCol() {
-		return col;
+	public void setRow(int row) {
+		this.row = row;
 	}
 
-	public void setValue(int row, int col) {
+	public int getColumn() {
+		return column;
+	}
+
+	public void setColumn(int column) {
+		this.column = column;
+	}
+
+	public void setValue(int row, int column) {
 
 	}
 
 	@Override
 	public String toString() {
-		return row + ", " + col;
+		return row + ", " + column;
 	}
 
 }
