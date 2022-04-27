@@ -2,7 +2,7 @@ package boardgame;
 
 public class Piece {
 
-	protected Position position; // signal to protected at UML Diag => #
+	protected Position position; // signal to protected kind at UML is #
 	private Board board;
 	
 
