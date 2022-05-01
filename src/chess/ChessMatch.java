@@ -52,9 +52,14 @@ public class ChessMatch { // This class is the core of all chess game, here are 
 	}
 
 	private void validateToPosition(Position position) {
-		if (!board.thereIsAPiece(position)) {
+		if (!(board.thereIsAPiece(position))) {
 			throw new ChessException("There is no piece on source position.");
 		}
+		
+		if(!(board.piece(position).isThereAnyPossibleMove())) {
+			throw new ChessException("There is no possible moves for the chosenn  piece");
+		}
+		
 	}
 
 	private void placeNewPiece(char column, int row, ChessPiece piece) {
