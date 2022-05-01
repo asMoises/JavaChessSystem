@@ -26,7 +26,8 @@ public class Position {
 	}
 
 	public void setValue(int row, int column) {
-
+		this.row = row;
+		this.column = column;
 	}
 
 	@Override

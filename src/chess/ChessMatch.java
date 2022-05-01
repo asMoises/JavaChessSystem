@@ -36,6 +36,7 @@ public class ChessMatch { // This class is the core of all chess game, here are 
 		Position source = sourcePosition.toPosition();
 		Position target = targetPosition.toPosition();
 		validateToPosition(source);
+		validateTargetPosition(source, target);
 		Piece capturedPiece = makeMove(source, target);
 
 		return (ChessPiece) capturedPiece;
@@ -60,6 +61,12 @@ public class ChessMatch { // This class is the core of all chess game, here are 
 			throw new ChessException("There is no possible moves for the chosenn  piece");
 		}
 		
+	}
+	
+	private void validateTargetPosition(Position source, Position target) {
+		if(!board.piece(source).possibleMove(target)) {
+			throw new ChessException("The chosen piece can not be mnoved to target position");
+		}
 	}
 
 	private void placeNewPiece(char column, int row, ChessPiece piece) {
