@@ -32,6 +32,13 @@ public class ChessMatch { // This class is the core of all chess game, here are 
 		return mat;
 	}
 
+	public boolean[][] possibleMoves(ChessPosition sourcePosition){
+		Position position = sourcePosition.toPosition();
+		validateSourcePosition(position);
+		
+		return board.piece(position).possibleMoves();
+	}
+
 	public ChessPiece performChessMove(ChessPosition sourcePosition, ChessPosition targetPosition) {
 		Position source = sourcePosition.toPosition();
 		Position target = targetPosition.toPosition();
@@ -61,6 +68,16 @@ public class ChessMatch { // This class is the core of all chess game, here are 
 			throw new ChessException("There is no possible moves for the chosenn  piece");
 		}
 		
+	}
+
+	private void validateSourcePosition(Position position){
+		if(!board.thereIsAPiece(position)){
+			throw new ChessException("There is no piece on source position");
+		}
+
+		if(!board.piece(position).isThereAnyPossibleMove()){
+			throw new ChessException("There is no possible moves for the chosen piece");
+		}
 	}
 	
 	private void validateTargetPosition(Position source, Position target) {
