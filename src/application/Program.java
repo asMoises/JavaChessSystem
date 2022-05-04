@@ -40,13 +40,12 @@ public class Program {
 				if (capturedPiece != null) {
 					captured.add(capturedPiece);
 				}
+
 			} catch (ChessException e) {
-				// TODO: handle exception
 				System.out.println(e.getMessage());
 				sc.nextLine();
 
 			} catch (InputMismatchException e) {
-				// TODO: handle exception
 				System.out.println(e.getMessage());
 				sc.nextLine();
 
