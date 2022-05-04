@@ -1,5 +1,8 @@
 package chess;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import boardgame.Board;
 import boardgame.Piece;
 import boardgame.Position;
@@ -14,6 +17,9 @@ public class ChessMatch { // This class is the core of all chess game, here are 
 	private boolean check;
 	private ChessPiece enPassantVulnerable;
 	private ChessPiece promoted;
+
+	private List<Piece> piecesOnTheBoard = new ArrayList<>();
+	private List<Piece> capturedPieces = new ArrayList<>();
 
 	public ChessMatch() {
 		board = new Board(8, 8);
@@ -63,10 +69,15 @@ public class ChessMatch { // This class is the core of all chess game, here are 
 
 	private Piece makeMove(Position source, Position target) {
 		Piece p = board.removePiece(source);
-		Piece capituredPiece = board.removePiece(target);
+		Piece capturedPiece = board.removePiece(target);
 		board.PlacePiece(p, target);
 
-		return capituredPiece;
+		if (capturedPiece != null) {
+			piecesOnTheBoard.remove(capturedPiece);
+			capturedPieces.add(capturedPiece);
+		}
+
+		return capturedPiece;
 
 	}
 
@@ -108,6 +119,7 @@ public class ChessMatch { // This class is the core of all chess game, here are 
 
 	private void placeNewPiece(char column, int row, ChessPiece piece) {
 		board.PlacePiece(piece, new ChessPosition(column, row).toPosition());
+		piecesOnTheBoard.add(piece);
 	}
 
 	private void initialSetup() {
